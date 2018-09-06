@@ -1,0 +1,20 @@
+#Getting tweets from twitter
+library(twitteR)
+#Twitter-R Authentication
+library(ROAuth)
+#Text processing
+library(stringr)
+#Text mining 
+library(tm)
+#Wordcloud creation
+library(wordcloud)
+
+# Change the next four lines based on your own consumer_key, consume_secret, access_token, and access_secret. 
+consumer_key <- "QoPK3SdmyMcDltucS3ktarsP9"
+consumer_secret <- "7YMLMG8JyFlhRVTXWOJnHAPYmPR3jZMagJFVyFY9P0FcfxrsEu"
+access_token <- "2955420385-90UQoW0ReDk2BgtcFxLG4TleZLZRudEkxAbDmQN"
+access_secret <- "1tdVywSJCvgFEoLbZzQ9RuRDl1vyhWIBixZ0L4Ah1EZV4"
+
+setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
+tw = twitteR::searchTwitter('@VictoriasSecret', n = 1e2, since = '2018-04-16', retryOnRateLimit = 1e3)
+d = twitteR::twListToDF(tw)
